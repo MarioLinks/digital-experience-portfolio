@@ -1,6 +1,6 @@
-[README.md](https://github.com/user-attachments/files/28448039/README.md)
+[README (1).md](https://github.com/user-attachments/files/28448559/README.1.md)
 # Digital Experience Portfolio
-### Mario Gonzalez — CMS Architecture, Digital Workplace Strategy & AI-Enabled Solutions
+### Mario Gonzalez - CMS Architecture, Digital Workplace Strategy & AI-Enabled Solutions
 
 ---
 
@@ -12,7 +12,7 @@ I am based in Chicago, IL and currently exploring opportunities where I can appl
 
 ---
 
-## Case Study 1 — Enterprise Intranet Relaunch (ARCH)
+## Case Study 1 - Enterprise Intranet Relaunch (ARCH)
 
 ### Overview
 
@@ -33,7 +33,7 @@ Years of ungoverned content had created a platform where search returned irrelev
 The original navigation was built for a 5-company organization. By the time of the relaunch, the company had grown to 250+ locations with multiple lines of business, regional structures, and a complex employee hierarchy. The navigation had never been updated to reflect this reality.
 
 **3. Data and integration chaos**
-User data was being fed into the platform from three separate systems — UKG, Paylocity, and MS365 — creating conflicting records, broken filters, and a colleague directory that employees could not trust.
+User data was being fed into the platform from three separate systems - UKG, Paylocity, and MS365 - creating conflicting records, broken filters, and a colleague directory that employees could not trust.
 
 ---
 
@@ -41,14 +41,14 @@ User data was being fed into the platform from three separate systems — UKG, P
 
 Before touching a single page, I ran a structured discovery process designed to surface the truth about how employees actually experienced the platform.
 
-**Employee Survey — 1,000 Respondents**
+**Employee Survey - 1,000 Respondents**
 
 I designed and deployed an organization-wide survey with the support of the communications team and leadership. The goal was to understand both what was working and what was failing, without creating alarm.
 
 Key findings:
 
 - Only 39% of employees used the platform weekly or daily
-- 80% felt neutral or satisfied overall — but the open-ended responses told a different story
+- 80% felt neutral or satisfied overall - but the open-ended responses told a different story
 - More than half of users relied on search to find information, yet search consistently failed to surface relevant results
 - 36% of employees found it difficult to find information
 - Nearly 40% of users took 5 minutes or more to find what they needed
@@ -63,7 +63,7 @@ Key qualitative findings from focus groups:
 
 - Navigation labels were confusing and caused users to feel lost before they even started
 - Several navigation sections were no longer relevant to how the business operated
-- The blue sub-navigation bar was nearly invisible — most users did not know it was clickable
+- The blue sub-navigation bar was nearly invisible - most users did not know it was clickable
 - There was no dedicated space for the regions, HR, lines of business, sales, or services that had grown significantly since the platform launched
 
 **Platform Analytics Review**
@@ -87,7 +87,7 @@ The original navigation had been built for a 5-company startup. I redesigned it 
 - Regions
 - Services
 
-Each top-level navigation item linked to a launchpad — a structured landing experience that allowed users to drill into the specific area they needed rather than facing a wall of content.
+Each top-level navigation item linked to a launchpad - a structured landing experience that allowed users to drill into the specific area they needed rather than facing a wall of content.
 
 **Data Governance and Integration Cleanup**
 
@@ -136,7 +136,7 @@ The relaunch was executed through a structured 9-week rollout:
 | Platform Searches | +60% |
 | App and Tool Opens | +175% |
 
-The +175% increase in app and tool opens was the most significant outcome. It demonstrated that the intranet had transformed from a passive communication channel into an active productivity hub — employees were now using it to access UKG, Marketing Cloud, Awardco, IT Service Desk, and HR Service Desk rather than navigating to those tools directly.
+The +175% increase in app and tool opens was the most significant outcome. It demonstrated that the intranet had transformed from a passive communication channel into an active productivity hub - employees were now using it to access UKG, Marketing Cloud, Awardco, IT Service Desk, and HR Service Desk rather than navigating to those tools directly.
 
 **Sustained Performance (April to May 2026)**
 
@@ -160,21 +160,115 @@ The sustained data is more meaningful than the launch spike. Content views and a
 
 ---
 
-## Case Study 2 — AI-Powered Chicago Transit App
+## Case Study 2 - Chicago L: CTA Transit App (In Development)
 
 ### Overview
 
-Built independently using Base44 and Claude AI, this application maps the entire Chicago Transit Authority (CTA) system and provides real-time transit information for users navigating the city.
+Chicago L is a personal R&D project I have been building using Base44 and Claude AI as primary development tools. The goal was to create a smarter, cleaner way to navigate the Chicago Transit Authority system - surfacing real-time train arrivals, nearby stations, live route mapping, and crowding data in a single mobile-first interface.
 
-This project was driven by personal curiosity about how AI tools can be used to build practical, useful applications without deep traditional software engineering backgrounds. It reflects the same instinct I bring to enterprise platform work — finding the most effective tool for the problem and building something that people actually want to use.
+I want to be upfront: I used AI-assisted development tools throughout this project. Base44 provided the application scaffolding and deployment environment, and Claude AI helped me work through code logic, debug issues, and accelerate development. I have familiarity with JavaScript and React but I am not a traditional software engineer - this project was an exercise in using modern AI tools to build something real, which I believe is increasingly how software gets built.
 
-**Tools used:** Base44, Claude AI, JavaScript
+That said, the architectural decisions were mine. I scoped the features, designed the data flows, integrated the live CTA API, and made deliberate choices about how the application should work.
 
-**What it demonstrates:**
-- Comfort with AI-assisted development workflows
-- Ability to scope, design, and ship a functional application independently
-- Curiosity about emerging technology and its practical applications
-- Initiative to build things outside of work that solve real problems
+---
+
+### What Is Working
+
+![Chicago L Home Screen](cta-app-home.png)
+
+The home screen surfaces nearby stations based on GPS location, shows real-time train arrivals with line color coding, displays crowding indicators pulled from live data, and allows users to favorite stations for quick access. The Nearby Stations view shows Fullerton (Red, Brown, Purple) and Armitage (Brown, Purple) with accurate arrival times.
+
+![Chicago L Map View](cta-app-map.png)
+
+The map view shows GPS-based routing with board and exit indicators, travel time estimates, and all CTA line filters. The example above shows a Fullerton to Monroe route on the Red line, accurately mapped at approximately 22 minutes.
+
+**What is fully functional:**
+- Live CTA API integration pulling real train arrival times
+- GPS-based nearby station detection
+- Route mapping with boarding and exit point indicators
+- Crowding data display
+- Multi-line filtering (Red, Blue, Brown, Green, Orange, Pink, Purple)
+- Alerts, Search, My Station, and Map pages
+
+---
+
+### The Technical Challenge I Am Still Working Through
+
+The hardest unsolved problem is multi-leg route accuracy. When a journey requires transferring between lines, the AI occasionally maps an incorrect train sequence - selecting a train that does not serve the full route. The CTA API returns arrival data per station rather than full route paths, which means the application has to infer the correct sequence of trains from fragmented data points. I have not cracked the transfer logic cleanly yet.
+
+This is the problem I am actively working through. It is a real engineering challenge and I am not pretending otherwise.
+
+---
+
+### A Key Architectural Decision - The API Proxy
+
+One decision I made early that I am proud of was building a server-side proxy to handle CTA API calls rather than making them directly from the client. This keeps the API key out of the browser and gives the application a clean server layer to handle multiple endpoint types.
+
+```typescript
+import { createClientFromRequest } from 'npm:@base44/sdk@0.8.25';
+
+const CTA_BASE = 'https://lapi.transitchicago.com/api/1.0';
+const ALERTS_BASE = 'https://www.transitchicago.com/api/1.0';
+
+Deno.serve(async (req) => {
+  try {
+    const body = await req.json();
+    const { endpoint, params } = body;
+
+    const key = Deno.env.get('CTA_TRAIN_TRACKER_API_KEY');
+    if (!key) {
+      return Response.json({ error: 'CTA API key not configured' }, { status: 500 });
+    }
+
+    let url;
+    if (endpoint === 'arrivals') {
+      const { stopId } = params;
+      url = `${CTA_BASE}/ttarrivals.aspx?key=${key}&mapid=${stopId}&outputType=JSON`;
+    } else if (endpoint === 'vehicles') {
+      const { rt } = params;
+      url = `${CTA_BASE}/ttpositions.aspx?key=${key}&rt=${rt}&outputType=JSON`;
+    } else if (endpoint === 'alerts') {
+      url = `${ALERTS_BASE}/alerts.aspx?outputType=JSON&activeonly=true`;
+    } else {
+      return Response.json({ error: 'Unknown endpoint' }, { status: 400 });
+    }
+
+    const res = await fetch(url);
+    if (!res.ok) {
+      return Response.json({ error: `CTA API error: ${res.status}` }, { status: res.status });
+    }
+
+    const data = await res.json();
+    return Response.json({ data });
+
+  } catch (error) {
+    return Response.json({ error: error.message }, { status: 500 });
+  }
+});
+```
+
+The proxy handles three endpoint types - train arrivals by station, live vehicle positions by route, and active service alerts - with proper error handling throughout. It runs on Deno and uses environment variables for API key management.
+
+---
+
+### Tech Stack
+
+- **Runtime:** Deno (server-side proxy)
+- **Frontend:** React, JSX, Tailwind CSS
+- **Build:** Vite
+- **API:** CTA Train Tracker API (live data)
+- **Development tools:** Base44, Claude AI
+- **Architecture:** Multi-page React application with dedicated pages for Home, Map, My Station, Search, Stop Detail, and Alerts
+
+---
+
+### What This Project Demonstrates
+
+- Ability to scope, architect, and build a multi-page application from scratch
+- Comfort using AI as a development accelerator rather than a shortcut
+- Security-conscious thinking - proxying API calls server-side rather than exposing keys client-side
+- Persistence with a hard technical problem rather than abandoning it
+- Curiosity about real-world data integration and how cities expose transit data through public APIs
 
 ---
 
@@ -194,7 +288,7 @@ This project was driven by personal curiosity about how AI tools can be used to 
 
 ## What I Bring
 
-Six years of enterprise platform ownership taught me that the best digital experiences are not built by people who only know code or only know strategy. They are built by people who can hold both at the same time — who can sit in a discovery session with HR leadership in the morning, review a data integration with IT in the afternoon, and write a content governance framework before the end of the day.
+Six years of enterprise platform ownership taught me that the best digital experiences are not built by people who only know code or only know strategy. They are built by people who can hold both at the same time - who can sit in a discovery session with HR leadership in the morning, review a data integration with IT in the afternoon, and write a content governance framework before the end of the day.
 
 I am currently deepening my technical foundation in PHP and CMS architecture because I want to be the person who can do all of that and also understand what is happening under the hood.
 
@@ -204,7 +298,7 @@ I am currently deepening my technical foundation in PHP and CMS architecture bec
 
 **LinkedIn:** linkedin.com/in/mario-gonzalez-72ba5a19a
 
-**Location:** Chicago, IL — open to hybrid and relocation
+**Location:** Chicago, IL - open to hybrid and relocation
 
 ---
 
