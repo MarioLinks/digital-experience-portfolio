@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CMS Architecture Advisor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans">
+
+  <div class="max-w-3xl mx-auto px-6 py-12">
+
+    <!-- Header -->
+    <div class="mb-10">
+      <p class="text-blue-600 font-semibold text-sm uppercase tracking-widest mb-2">Mario Gonzalez</p>
+      <h1 class="text-4xl font-bold text-gray-900 mb-3">CMS Architecture Advisor</h1>
+      <p class="text-gray-500 text-lg">Answer a few questions about your client and get a tailored CMS architecture recommendation.</p>
+    </div>
+
+    <!-- Question 1 -->
+    <div class="mb-8">
+      <p class="text-gray-800 font-semibold text-lg mb-3">1. What type of organization is the client?</p>
+      <div class="grid grid-cols-2 gap-3" id="q1">
+        <button onclick="selectAnswer(this, 'q1')" class="option-btn border-2 border-gray-200 rounded-xl px-4 py-3 text-left text-gray-700 hover:border-blue-500 transition">Government or Public Sector</button>
+        <button onclick="selectAnswer(this, 'q1')" class="option-btn border-2 border-gray-200 rounded-xl px-4 py-3 text-left text-gray-700 hover:border-blue-500 transition">Large Enterprise</button>
+        <button onclick="selectAnswer(this, 'q1')" class="option-btn border-2 border-gray-200 rounded-xl px-4 py-3 text-left text-gray-700 hover:border-blue-500 transition">Nonprofit or Education</button>
+        <button onclick="selectAnswer(this, 'q1')" class="option-btn border-2 border-gray-200 rounded-xl px-4 py-3 text-left text-gray-700 hover:border-blue-500 transition">Small to Mid-size Business</button>
+      </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="mb-8">
+      <p class="text-gray-800 font-semibold text-lg mb-3">2. What is the primary goal of the platform?</p>
+      <div class="grid grid-cols-2 gap-3" id="q2">
+        <button onclick="selectAnswer(this, 'q2')" class="option-btn border-2 border-gray-200 rounded-xl px-4 py-3 text-left text-gray-700 hover:border-blue-500 transition">Public-facing website</button>
+        <button onclick="selectAnswer(this, 'q2')" class="option-btn border-2 border-gray-200 rounded-xl px-4 py-3 text-left text-gray-700 hover:border-blue-500 transition">Internal employee intranet</button>
+        <button onclick="selectAnswer(this, 'q2')" class="option-btn border-2 border-gray-200 rounded-xl px-4 py-3 text-left text-gray-700 hover:border-blue-500 transition">E-commerce and transactions</button>
+        <button onclick="selectAnswer(this, 'q2')" class="option-btn border-2 border-gray-200 rounded-xl px-4 py-3 text-left text-gray-700 hover:border-blue-500 transition">Multi-site ecosystem</button>
+      </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="mb-8">
+      <p class="text-gray-800 font-semibold text-lg mb-3">3. How important is third-party integration?</p>
+      <div class="grid grid-cols-2 gap-3" id="q3">
+        <button onclick="selectAnswer(this, 'q3')" class="option-btn border-2 border-gray-200 rounded-xl px-4 py-3 text-left text-gray-700 hover:border-blue-500 transition">Critical - many systems to connect</button>
+        <button onclick="selectAnswer(this, 'q3')" class="option-btn border-2 border-gray-200 rounded-xl px-4 py-3 text-left text-gray-700 hover:border-blue-500 transition">Moderate - a few key integrations</button>
+        <button onclick="selectAnswer(this, 'q3')" class="option-btn border-2 border-gray-200 rounded-xl px-4 py-3 text-left text-gray-700 hover:border-blue-500 transition">Minimal - mostly standalone</button>
+        <button onclick="selectAnswer(this, 'q3')" class="option-btn border-2 border-gray-200 rounded-xl px-4 py-3 text-left text-gray-700 hover:border-blue-500 transition">Not sure yet</button>
+      </div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="mb-10">
+      <p class="text-gray-800 font-semibold text-lg mb-3">4. What is the team's technical capability?</p>
+      <div class="grid grid-cols-2 gap-3" id="q4">
+        <button onclick="selectAnswer(this, 'q4')" class="option-btn border-2 border-gray-200 rounded-xl px-4 py-3 text-left text-gray-700 hover:border-blue-500 transition">Strong dev team in house</button>
+        <button onclick="selectAnswer(this, 'q4')" class="option-btn border-2 border-gray-200 rounded-xl px-4 py-3 text-left text-gray-700 hover:border-blue-500 transition">Mixed - some technical staff</button>
+        <button onclick="selectAnswer(this, 'q4')" class="option-btn border-2 border-gray-200 rounded-xl px-4 py-3 text-left text-gray-700 hover:border-blue-500 transition">Non-technical team</button>
+        <button onclick="selectAnswer(this, 'q4')" class="option-btn border-2 border-gray-200 rounded-xl px-4 py-3 text-left text-gray-700 hover:border-blue-500 transition">Outsourced development</button>
+      </div>
+    </div>
+
+    <!-- Generate Button -->
+    <button
+      onclick="generate()"
+      class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-lg py-4 rounded-xl transition mb-10">
+      Generate Recommendation
+    </button>
+
+    <!-- Result Box -->
+    <div id="result" class="hidden bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+      <p class="text-blue-600 font-semibold text-sm uppercase tracking-widest mb-2">Recommendation</p>
+      <h2 id="result-title" class="text-2xl font-bold text-gray-900 mb-4"></h2>
+      <p id="result-body" class="text-gray-600 leading-relaxed mb-6"></p>
+      <div id="result-tags" class="flex flex-wrap gap-2"></div>
+    </div>
+
+  </div>
+
+  <script>
+    const answers = { q1: null, q2: null, q3: null, q4: null };
+
+    function selectAnswer(button, question) {
+      document.querySelectorAll('#' + question + ' .option-btn').forEach(function(btn) {
+        btn.classList.remove('border-blue-500', 'bg-blue-50', 'text-blue-700');
+        btn.classList.add('border-gray-200', 'text-gray-700');
+      });
+      button.classList.add('border-blue-500', 'bg-blue-50', 'text-blue-700');
+      button.classList.remove('border-gray-200', 'text-gray-700');
+      answers[question] = button.innerText;
+    }
+
+    function generate() {
+      if (!answers.q1 || !answers.q2 || !answers.q3 || !answers.q4) {
+        alert('Please answer all four questions before generating a recommendation.');
+        return;
+      }
+
+      var org = answers.q1;
+      var goal = answers.q2;
+      var integration = answers.q3;
+      var tech = answers.q4;
+
+      var title = '';
+      var body = '';
+      var tags = [];
+
+      if (org.indexOf('Government') !== -1 && goal.indexOf('Public-facing') !== -1) {
+        title = 'Drupal - Enterprise Government CMS';
+        body = 'Drupal is the gold standard for government and public sector websites. It is open source, WCAG 2.1 accessible out of the box, and trusted by hundreds of federal, state, and city governments including the City of Chicago. Its robust content governance, multilingual support, and security track record make it the right call for public-facing government platforms. Pair it with Acquia for managed cloud hosting to reduce infrastructure overhead.';
+        tags = ['Drupal', 'Acquia', 'WCAG 2.1', 'Open Source', 'Government'];
+      } else if (org.indexOf('Large Enterprise') !== -1 && goal.indexOf('intranet') !== -1) {
+        title = 'Unily or Simpplr - Enterprise Intranet Platform';
+        body = 'For a large enterprise intranet, a purpose-built employee experience platform like Unily or Simpplr will outperform a general CMS every time. These platforms are designed for internal communications, tool integration, and employee engagement at scale. They connect natively to HR systems like UKG and MS365, support complex admin governance structures, and have analytics built in to measure adoption. A general CMS like WordPress or Drupal can work but will require significant custom development to match what these platforms do out of the box.';
+        tags = ['Unily', 'Simpplr', 'Employee Experience', 'MS365 Integration', 'Enterprise'];
+      } else if (goal.indexOf('Multi-site') !== -1) {
+        title = 'Drupal Multisite or Acquia Site Factory';
+        body = 'When a client needs to manage multiple websites under one umbrella, Drupal Multisite or Acquia Site Factory is the architecture to reach for. It allows a single codebase to power dozens or hundreds of sites while maintaining centralized governance, shared design systems, and consistent security updates. This is particularly effective for organizations with regional offices, multiple brands, or franchise structures. Acquia Site Factory adds a management layer that makes spinning up and governing new sites significantly faster.';
+        tags = ['Drupal', 'Acquia Site Factory', 'Multisite', 'Governance', 'Scalability'];
+      } else if (goal.indexOf('E-commerce') !== -1) {
+        title = 'Shopify Plus or WordPress with WooCommerce';
+        body = 'For transaction-focused platforms the CMS choice depends heavily on complexity. Shopify Plus is the faster path to market with lower development overhead and is ideal for organizations that want to focus on products and conversion rather than platform maintenance. WordPress with WooCommerce gives more flexibility and ownership but requires a stronger development team to maintain securely at scale. If the client has a strong in-house dev team, WooCommerce. If they want speed and reliability with less technical overhead, Shopify Plus.';
+        tags = ['Shopify Plus', 'WooCommerce', 'WordPress', 'E-commerce', 'Transactions'];
+      } else if (org.indexOf('Nonprofit') !== -1 && tech.indexOf('Non-technical') !== -1) {
+        title = 'WordPress - Managed Hosting with Page Builder';
+        body = 'For nonprofit and education clients with non-technical teams, WordPress on managed hosting like WP Engine or Kinsta paired with a page builder like Elementor or Gutenberg blocks is the right fit. It gives content editors a visual drag and drop experience that requires no coding knowledge, while keeping the platform affordable and widely supported. The enormous WordPress ecosystem means virtually any feature the client needs already exists as a plugin.';
+        tags = ['WordPress', 'WP Engine', 'Elementor', 'Nonprofit', 'Non-technical'];
+      } else {
+        title = 'WordPress or Drupal - Evaluate Based on Scale';
+        body = 'Based on your inputs, either WordPress or Drupal could serve this client well depending on the final scope. WordPress is the right call if the team is non-technical, the budget is limited, and the content needs are straightforward. Drupal is the right call if the platform needs to scale significantly, handle complex integrations, or meet strict security and accessibility requirements. A full discovery session with the client would help narrow this down further.';
+        tags = ['WordPress', 'Drupal', 'Discovery Needed', 'Scalable'];
+      }
+
+      if (integration.indexOf('Critical') !== -1) {
+        body += ' Given the critical integration requirements, plan for a dedicated API layer and ensure the chosen CMS has a robust REST API or GraphQL endpoint. Budget additional time for integration architecture and testing.';
+        tags.push('REST API', 'Integrations');
+      }
+
+      document.getElementById('result-title').innerText = title;
+      document.getElementById('result-body').innerText = body;
+
+      var tagsContainer = document.getElementById('result-tags');
+      tagsContainer.innerHTML = '';
+      tags.forEach(function(tag) {
+        var span = document.createElement('span');
+        span.innerText = tag;
+        span.className = 'bg-blue-50 text-blue-700 text-sm font-medium px-3 py-1 rounded-full border border-blue-200';
+        tagsContainer.appendChild(span);
+      });
+
+      document.getElementById('result').classList.remove('hidden');
+      document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
